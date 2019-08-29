@@ -1,48 +1,50 @@
 {
-  "name": "minimal-electron-react-webpack-boilerplate",
+  "name": "daniel-demo",
   "version": "1.0.0",
   "description": "",
   "main": "./build/main.js",
   "scripts": {
+    "clean": "rm -fr build dist",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
-    "server": "webpack-dev-server --port 9000 --mode development",
+    "local-server": "webpack-dev-server --port 9000 --mode development",
     "electron": "wait-on http://localhost:9000/ && cross-env NODE_ENV=development electron .",
-    "dev": "npm run build:dev && concurrently -s first -k \"npm run server\" \"npm run electron\"",
+    "dev": "npm run build:dev && concurrently -s first -k \"npm run local-server\" \"npm run electron\"",
     "pack": "npm run build:prod && electron-builder --dir",
     "dist": "npm run build:prod && electron-builder",
     "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [],
   "author": "",
+  "repository": "https://github.com/daniel-xsu/minimal-electron-react-webpack-boilerplate.git",
   "license": "ISC",
   "build": {
-    "appId": "com.example.electron",
+    "appId": "com.daniel.demo.electron",
     "files": [
       "build/**/*"
     ]
   },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "concurrently": "^4.1.0",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^4.1.2",
     "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "electron": "^5.0.1",
-    "electron-builder": "^20.40.2",
+    "css-loader": "^3.2.0",
+    "electron": "^6.0.5",
+    "electron-builder": "^21.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.23.1",
-    "wait-on": "^3.2.0",
-    "webpack": "^4.31.0",
-    "webpack-cli": "^3.3.2",
-    "webpack-dev-server": "^3.3.1",
+    "style-loader": "^1.0.0",
+    "wait-on": "^3.3.0",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0",
     "webpack-node-externals": "^1.7.2"
-  },
-  "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
   }
 }
